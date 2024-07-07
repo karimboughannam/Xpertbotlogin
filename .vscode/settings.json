@@ -1,0 +1,20 @@
+{
+    "python.testing.pytestArgs": [
+        "testcases",
+        
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "cSpell.words": [
+        "creds",
+        "Ghannam",
+        "Karim",
+        "usefixtures",
+        "Xperbotlogin",
+        "Xpert",
+        "Xpertbbotlogin",
+        "Xpertbot",
+        "xpertbotlogin",
+        "Xpertbottesting"
+    ]
+}
