@@ -50,7 +50,7 @@ jobs:
                  --html=reports/Xpertbot.html \
                  --self-contained-html \
                  --css=reports/assets/style.css \
-                 -k "TestXpertbotLogin"
+                 -k "TestXperbotlogin"
         env:
           DISPLAY: :99.0 # Required for headless browsers
 
