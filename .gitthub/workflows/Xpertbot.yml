@@ -1,0 +1,63 @@
+name: Xpertbot Login Automation
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  xpertbot-login:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # Step 3: Cache pip dependencies
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 5: Create reports directory
+      - name: Create reports directory
+        run: mkdir -p reports/assets
+
+      # Step 6: Run Tests
+      - name: Run Xpertbot Tests
+        run: |
+          source venv/bin/activate
+          pytest --disable-warnings \
+                 --html=reports/Xpertbot.html \
+                 --self-contained-html \
+                 --css=reports/assets/style.css \
+                 -k "TestXpertbotLogin"
+        env:
+          DISPLAY: :99.0 # Required for headless browsers
+
+      # Step 7: Upload Test Reports as Artifacts
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestReports
+          path: reports/
