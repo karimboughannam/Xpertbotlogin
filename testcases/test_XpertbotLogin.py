@@ -18,7 +18,7 @@ from Utilities.utils import AutomationLogger
 
 class TestXperbotlogin:
     log= AutomationLogger.automation()
-    test_date=AutomationLogger.get_newest_excel_file("C:\\Users\\KarimBouGhannam\\Documents\\Xpertbot\\testdata","Sheet1")
+    test_date=AutomationLogger.get_newest_excel_file("testdata","Sheet1")
     @pytest.mark.parametrize("test_data",test_date)
     # @pytest.mark.parametrize("test_data", [{"username":"karimbou","password":"123456","expected_result":"Invalid credentials"}])
     def test_xpertbotlogin(self,test_data):
