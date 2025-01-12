@@ -1,8 +1,9 @@
 {
     "python.testing.pytestArgs": [
         "testcases",
-        "--html=reports/xpertbot.html",
+        "--html=reports/testxpertbot.html",
         "--css=reports/assets/style.css",
+        
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,

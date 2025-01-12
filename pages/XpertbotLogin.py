@@ -14,3 +14,6 @@ class Xpert():
 
     def Xpertbottesting(self,username,password):
         Xpertbbotlogin(self,username,password)
+
+    def XpertSign(self,username,password,confirmpass,email):
+        XpertbotSignuptest(self,username,password,confirmpass,email)
